@@ -76,16 +76,20 @@ function escKey(evt) {
 }
 document.addEventListener("keydown", escKey);
 
-
 // 👉 TASK 7- Add to ALL ELEMENTS ON THE PAGE an event listener for click events.
 // It should console.log the target 🎯 of the event.
 // It should also console.log the CURRENT target 🧭 of the event.
 // Play with stopPropagation and stopImmediatePropagation.
 document.querySelectorAll("*").forEach(elem => elem.addEventListener("click", evt => {
-  console.log("target:          ", evt.target);
-  console.log("current target:  ", evt.currentTarget);
-  console.log("\n");
+  // console.log("target:          ", evt.target);
+  // console.log("current target:  ", evt.currentTarget);
+  // console.log("\n");
 }))
+
+modal.addEventListener("click", event => {
+  console.log("Take this JS!");
+  event.stopPropagation();
+})
 
 
 // 👉 TASK 8- [STRETCH] Create helper functions to make the code
