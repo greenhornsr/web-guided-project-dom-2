@@ -110,3 +110,19 @@ function killReports() {
 // 👉 TASK 9- [STRETCH] Using the mouseover event on 'document',
 // log to the console the X and Y coordinates
 // of the mouse pointer, as it moves over the screen.
+
+
+
+
+
+// PHASE COMPLETE!!!!!
+// Phase two ::: on click of the button, create an h2 element with the text "TBD"
+const happyButton = document.querySelector("#happy");
+happyButton.addEventListener("click", () => {
+  const happyMessage = document.createElement("h2");
+  document.body.appendChild(happyMessage);
+  happyMessage.textContent = "I'm extremely optimistic about the future of the human species";
+  const sadMessage = document.createElement("h2");
+  sadMessage.textContent = "...";
+  document.body.appendChild(sadMessage);
+})
