@@ -130,3 +130,10 @@ function killReports() {
 // 👉 TASK 9- [STRETCH] Using the mouseover event on 'document',
 // log to the console the X and Y coordinates
 // of the mouse pointer, as it moves over the screen.
+document.addEventListener('mouseover', event => {
+    event.target.style.color = "green"
+    console.log(event.clientX, event.clientY)
+    setTimeout(() => {
+        event.target.style.color = ""
+    }, 500)
+})
