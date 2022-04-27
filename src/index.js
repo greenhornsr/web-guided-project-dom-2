@@ -13,15 +13,15 @@ window.onload = function() {
 
 // A- BUTTONS
 const launchButton = document.querySelector('#launchButton')
-const confirmButton = null
-const cancelButton = null
+const confirmButton = document.querySelector('#confirmButton')
+const cancelButton = document.querySelector('cancelButton')
 
 // B- MESSAGES
-const successMessage = null
-const failureMessage = null
+const successMessage = document.querySelector('.success')
+const failureMessage = document.querySelector('.failure')
 
 // C- MODAL
-const modal = null
+const modal = document.querySelector('.modal')
 
 
 // 👉 TASK 2- Demo handling click events on button#launchButton, using:
