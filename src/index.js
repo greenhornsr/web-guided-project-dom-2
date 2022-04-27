@@ -9,12 +9,21 @@ window.onload = function() {
     const launchButton = document.querySelector('#launchButton')
     console.log('the button -> ', launchButton )
 }
+An even better approach would be to use:
+window.addEventListener('load', function(event){
+    // ALL OF YOU PROGRAM HERE
+    // if you can't use the defer attribute in html, for example
+    // or if you want to make sure some code runs AFTER 
+    // the 'load' event fires on the tab
+    // (which would mean the DOM is constructed)
+})
+
 */
 
 // A- BUTTONS
 const launchButton = document.querySelector('#launchButton')
 const confirmButton = document.querySelector('#confirmButton')
-const cancelButton = document.querySelector('cancelButton')
+const cancelButton = document.querySelector('#cancelButton')
 
 // B- MESSAGES
 const successMessage = document.querySelector('.success')
@@ -23,16 +32,33 @@ const failureMessage = document.querySelector('.failure')
 // C- MODAL
 const modal = document.querySelector('.modal')
 
+// used to debug code; very powerful!  USE THIS!
+// debugger
 
 // 👉 TASK 2- Demo handling click events on button#launchButton, using:
 //  A- HTML inside index.html
 //  B- The DOM's element.onclick attribute
+launchButton.onclick = function() {
+    console.log('old way')
+}
 //  C- element.addEventListener('click', callback)
+function eventListener (event) {
+    // handle click event
+    // console.log('newest and best way to handle events.  Also allows us to add multiple events to the button which will all fire.')
+    console.log(`
+    event type: ${event.type}
+    event target: ${event.target.nodeName}
+    event timestamp: ${Math.floor(event.timeStamp /  1000)}
+    `)
+}
+//html element.addevent        event , callback
+launchButton.addEventListener('click', eventListener)
 
 
 // 👉 TASK 3- Create a function that launches!
 // It should open the confirmation modal.
 // Add it as an event listener for click events on the launch button.
+launchButton.addEventListener('click', openModal)
 
 
 // 👉 TASK 4- Create a function to confirm the launch.
@@ -59,7 +85,7 @@ const modal = document.querySelector('.modal')
 // 👉 TASK 8- [STRETCH] Create helper functions to make the code
 // more readable in tasks 3, 4, 5, 6
 function openModal() {
-
+    modal.classList.toggle('off')
 }
 
 function closeModal() {
