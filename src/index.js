@@ -45,6 +45,8 @@ launchButton.onclick = function() {
 function eventListener (event) {
     // handle click event
     // console.log('newest and best way to handle events.  Also allows us to add multiple events to the button which will all fire.')
+    successMessage.classList.add('off')
+    failureMessage.classList.add('off')
     console.log(`
     event type: ${event.type}
     event target: ${event.target.nodeName}
@@ -64,12 +66,18 @@ launchButton.addEventListener('click', openModal)
 // 👉 TASK 4- Create a function to confirm the launch.
 // It should close the modal and display a success report.
 // Add it as a listener for clicks on the confirmation button.
-
+confirmButton.addEventListener('click', function(event){
+    closeModal()
+    successMessage.classList.remove('off')
+})
 
 // 👉 TASK 5- Create a function to cancel the launch.
 // It should close the modal and display a failure report.
 // Add it as a listener for clicks on the cancellation button.
-
+cancelButton.addEventListener('click', function(event){
+    closeModal()
+    failureMessage.classList.remove('off')
+})
 
 // 👉 TASK 6- Create a function that closes the modal if
 // the user hits the Escape key on their keyboard.
@@ -85,11 +93,11 @@ launchButton.addEventListener('click', openModal)
 // 👉 TASK 8- [STRETCH] Create helper functions to make the code
 // more readable in tasks 3, 4, 5, 6
 function openModal() {
-    modal.classList.toggle('off')
+    modal.classList.remove('off')
 }
 
 function closeModal() {
-
+    modal.classList.add('off')
 }
 
 function killReports() {
