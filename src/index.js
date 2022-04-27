@@ -39,17 +39,17 @@ const modal = document.querySelector('.modal')
 //  A- HTML inside index.html
 //  B- The DOM's element.onclick attribute
 launchButton.onclick = function() {
-    console.log('old way')
+    console.log('old way that only allows for a single event listener of given type on any given element')
 }
 //  C- element.addEventListener('click', callback)
 function eventListener (event) {
     // handle click event
     // console.log('newest and best way to handle events.  Also allows us to add multiple events to the button which will all fire.')
-    successMessage.classList.add('off')
-    failureMessage.classList.add('off')
+    killReports()
     console.log(`
     event type: ${event.type}
     event target: ${event.target.nodeName}
+    event currenttarget: ${event.currentTarget.nodeName}
     event timestamp: ${Math.floor(event.timeStamp /  1000)}
     `)
 }
@@ -94,6 +94,21 @@ document.addEventListener('keydown', e => {
 // It should console.log the target 🎯 of the event.
 // It should also console.log the CURRENT target 🧭 of the event.
 // Play with stopPropagation and stopImmediatePropagation.
+    // NOTES:
+    // stopPropagation is necessary to avoid bubble events firing back up the element tree.
+    // elements tree example: window > document > HTML > head or body > div > button
+    // if there is an event linked to a button that bubbles, once fired it will cause any events linked to div, body, document, window to also fire.
+Array.from(document.getElementsByTagName('*')).forEach(element => {
+    element.addEventListener('click', event => {
+        event.stopPropagation()  // <-- disrupts propogation aka bubbling
+        console.log(`
+        event type: ${event.type}
+        event target: ${event.target.nodeName}
+        event currenttarget: ${event.currentTarget.nodeName}
+        event timestamp: ${Math.floor(event.timeStamp /  1000)}
+        `)
+    })
+})
 
 
 // 👉 TASK 8- [STRETCH] Create helper functions to make the code
@@ -107,7 +122,8 @@ function closeModal() {
 }
 
 function killReports() {
-
+    successMessage.classList.add('off')
+    failureMessage.classList.add('off')
 }
 
 
