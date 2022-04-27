@@ -2,8 +2,17 @@ console.log('project is up')
 
 // 👉 TASK 1- Select the following elements from the DOM:
 
+/* alternate option to using defer in script tag of html page is using the following in .js
+Target browser must support the defer tag in order to use defer.
+window.onload = function() {
+    All of my program would go here
+    const launchButton = document.querySelector('#launchButton')
+    console.log('the button -> ', launchButton )
+}
+*/
+
 // A- BUTTONS
-const launchButton = null
+const launchButton = document.querySelector('#launchButton')
 const confirmButton = null
 const cancelButton = null
 
